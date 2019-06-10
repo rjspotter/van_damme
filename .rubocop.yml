@@ -1,0 +1,70 @@
+inherit_from:
+  - https://raw.githubusercontent.com/LegalShield/rubocop-config/rjspotter/upgrade-55-to-68/rubocop.yml
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/LambdaCall:
+  EnforcedStyle: braces
+
+Metrics/PerceivedComplexity:
+  Enabled: true
+  Exclude:
+    - "app/services/user_service.rb"
+    - "app/controllers/v1/subscriptions_controller.rb"
+
+Rails/SkipsModelValidations:
+  Blacklist:
+    - decrement!
+    - decrement_counter
+    - increment!
+    - increment_counter
+    - toggle!
+    - update_all
+    - update_attribute
+    - update_column
+    - update_columns
+    - update_counters
+  Exclude:
+    - "app/models/identity.rb"
+
+Metrics/ClassLength:
+  Enabled: true
+  Exclude:
+    - "app/services/user_service.rb"
+    - "app/services/cashbox_service.rb"
+    - "lib/region/gb/service/subscription_service.rb"
+    - "app/controllers/auth/v1/tokens_controller.rb"
+    - "app/models/sales_organization.rb"
+
+# Accommodate RSpec idioms
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+Style/RescueStandardError:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Exclude:
+    - "app/services/user_service.rb"
+    - "app/services/o_auth2_authentication_service.rb"
+    - "app/controllers/v1/subscriptions_controller.rb"
+    - "app/workers/event_notification_worker.rb"
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - sandbox
+    - uat
+    - production
+
+Rails/FindBy:
+  Exclude:
+    - "app/models/associate_rank.rb"
+
+Metrics/BlockNesting:
+  Exclude:
+    - "lib/tasks/compensation_plan.rake"
+
